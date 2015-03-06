@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>bacon knockout sample</title>
+</head>
+<body>
+<h1>BaconJS and KnockoutJS sample Application.</h1>
+
+<h2>Search Repositories from GitHub when use BaconJS and KnockoutJS</h2>
+
+<form>
+  <input type="text" id="query" name="query" placeholder="search repositoris"/>
+</form>
+
+<table>
+  <tr>
+    <th>name</th>
+    <th>path</th>
+    <th>Auther</th>
+  </tr>
+  <tbody data-bind="foreach: repos">
+    <tr>
+      <td data-bind="text: name"></td>
+      <td data-bind="text: full_name"></td>
+      <td>
+        <img data-bind="attr: {src: owner.avatar_url}" alt="" />
+        <span data-bind="text: owner.login"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<script src="lib/js/lodash.min.js"></script>
+<script src="lib/js/jquery.min.js"></script>
+<script src="lib/js/knockout.js"></script>
+<script src="lib/js/Bacon.min.js"></script>
+<script src="lib/js/Bacon.UI.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
