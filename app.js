@@ -18,14 +18,20 @@ var app = app || {};
     // -------------------------------
 
     // make input stream
-    var inputStream = $('#query').asEventStream('input')
+    var inputStream = $('#query')
+        // make steam input event from jquery selctor
+        .asEventStream('input')
+        // throttle
+        .throttle(500)
+        // get input text
         .map(function(e){
             return $(e.target).val();
-        });
+        })
+        // ignore same text
+        .skipDuplicates();
 
     // make query stream
     var queryStream = inputStream
-        .throttle(500)
         .filter(function(text){
             return text.length > 0;
         })
