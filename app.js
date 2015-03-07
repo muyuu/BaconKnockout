@@ -43,9 +43,31 @@ var app = app || {};
       return res.items;
     });
 
+  // sort stream
+  var ascSortStream = $("#ascBtn").asEventStream('click')
+    .map(function(){
+      var source = viewModel.repos() || [];
+      return _.sortBy(source, function(repo){ return repo.name; });
+    });
+
+  var descSortStream = $("#descBtn").asEventStream('click')
+    .map(function(){
+      var source = viewModel.repos() || [];
+      return _.sortBy(source, function(repo){ return repo.name; }).reverse();
+    });
+
+  // merge sort stream
+  var sortStream = ascSortStream.merge(descSortStream);
+
+
   // render
   repositoriesStream.onValue(function(repos){
     // knockout binding
+    viewModel.repos(repos);
+  });
+
+  // render sort
+  sortStream.onValue(function(repos){
     viewModel.repos(repos);
   });
 })(window, jQuery, _, ko, app);
