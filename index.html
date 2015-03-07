@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-  <meta charset="UTF-8">
-  <title>bacon knockout sample</title>
-  <link rel="stylesheet" href="./style.css"/>
+	<meta charset="UTF-8">
+	<title>bacon knockout sample</title>
+	<link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
 <div class="container">
-  <h1>BaconJS and KnockoutJS sample Application.</h1>
+	<h1>BaconJS and KnockoutJS sample Application.</h1>
 
-  <h2>Search Repositories from GitHub. Used BaconJS and KnockoutJS</h2>
+	<h2>Search Repositories from GitHub. Used BaconJS and KnockoutJS</h2>
 
-  <div class="box">
-    <form>
-      <span>Input keywords: </span>
-      <input type="text" id="query" name="query" placeholder="search repositoris"/>
-    </form>
-  </div>
+	<div class="box">
+		<form>
+			<span>Input keywords: </span>
+			<input type="text" id="query" name="query" placeholder="search repositoris"/>
+		</form>
+	</div>
 
-  <div class="box">
-    <table>
-      <tr>
-        <th>
-          name
-          <input type="button" value="▲" id="ascBtn"/>
-          <input type="button" value="▼" id="descBtn"/>
-        </th>
-        <th>description</th>
-        <th>star</th>
-        <th>Auther</th>
-      </tr>
-      <tbody data-bind="foreach: repos">
-      <tr>
-        <td>
-          <a data-bind="attr: {href: clone_url}" target="_blank">
-            <span data-bind="text: name"></span>
-          </a>
-        </td>
-        <td>
-          <span data-bind="text: description"></span>
-        </td>
-        <td>
-          <span data-bind="text: stargazers_count"></span>
-        </td>
-        <td>
-          <img data-bind="attr: {src: owner.avatar_url}" alt="" width="80"/>
-          <p data-bind="text: owner.login"></p>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+	<div class="box">
+		<table>
+			<thead>
+			<tr>
+				<th>
+					name
+					<input type="button" value="▲" id="ascBtn"/>
+					<input type="button" value="▼" id="descBtn"/>
+				</th>
+				<th>description</th>
+				<th>star</th>
+				<th>Auther</th>
+			</tr>
+			</thead>
+			<tbody data-bind="foreach: repos">
+			<tr>
+				<td>
+					<a data-bind="attr: {href: clone_url}" target="_blank">
+						<span data-bind="text: name"></span>
+					</a>
+				</td>
+				<td>
+					<span data-bind="text: description"></span>
+				</td>
+				<td>
+					<span data-bind="text: stargazers_count"></span>
+				</td>
+				<td>
+					<img data-bind="attr: {src: owner.avatar_url}" alt="" width="80"/>
+
+					<p data-bind="text: owner.login"></p>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
 <script src="lib/js/lodash.min.js"></script>
 <script src="lib/js/jquery.min.js"></script>
